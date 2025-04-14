@@ -242,4 +242,20 @@ class Vector:
         raise ZeroDivisionError("module of vector = 0")
 
 if __name__ == "__main__":
-   pass
+    v1 = Vector(3, 4)
+    v2 = Vector(1, 2)
+
+    print("v1:", v1)
+    print("v2:", v2)
+
+    print("Addition:", v1 + v2)
+    print("Subtraction:", v1 - v2)
+    print("Dot Product:", v1 * v2)
+    print("Scalar Multiplication:", v1 * 2)
+    print("Scalar Division:", v1 / 2)
+    print("Magnitude of v1:", abs(v1))
+    print("Normalized v1:", v1.normalize())
+    print("Angle between v1 and v2 (radians):", v1.angle_between(v2))
+    print("Equality check:", v1 == v2)
+    print("Negation of v1:", -v1)
+
