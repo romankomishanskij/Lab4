@@ -113,7 +113,7 @@ class Vector:
             raise TypeError("You can do only subtract two Vector type objects")
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: object) -> object:
+    def __mul__(self, other: object) -> 'Vector' or float:
         """
         Multiply vector by scalar or compute dot product.
 
@@ -133,7 +133,7 @@ class Vector:
         else:
             raise TypeError("You can multiply vector only with other vector or number")
 
-    def __rmul__(self, other: object) -> object:
+    def __rmul__(self, other: object) -> 'Vector' or float:
         """
         Right-side multiplication support.
 
@@ -227,15 +227,19 @@ class Vector:
 
     def normalize(self) -> object:
         """
-        Seve direction but not size
+        Normalize the vector (keep direction, set magnitude to 1).
 
         Returns:
-            Vector: normalized vector
+            Vector: A unit vector with the same direction.
+
+        Raises:
+            ZeroDivisionError: If the vector is zero.
         """
+
         mod = abs(self)
         if mod:
             return Vector(self.x / mod, self.y / mod)
         raise ZeroDivisionError("module of vector = 0")
 
 if __name__ == "__main__":
-    pass
+   pass
