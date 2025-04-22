@@ -15,7 +15,11 @@ Includes support for arithmetic operations, dot product, magnitude, normalizatio
 - Angle between two vectors (in radians)
 - Operator overloading: `+`, `-`, `*`, `/`, `==`, `abs()`, `-vector`
 
+## How to connect the module
 
+```python
+from vectors import Vector
+```
 
 ## Example Usage
 
@@ -30,4 +34,4 @@ print(v1 * 2)             # vector(6, 8)
 print(v1 * v2)            # 11 (dot product)
 print(abs(v1))            # 5.0
 print(v1.normalize())     # vector(0.6, 0.8)
-print(v1.angle_between(v2))  # angle in radians
+print(v1.angle_between(v2))  # angle in radians 
