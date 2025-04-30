@@ -1,37 +1,98 @@
-# Vector Class (2D) in Python
+# Vector
 
-A simple and extensible `Vector` class for working with 2D vectors.  
-Includes support for arithmetic operations, dot product, magnitude, normalization, and angle calculation.
+`Vector` — модуль Python для роботи з двовимірними векторами. Підтримує базові векторні операції: додавання, віднімання, множення на скаляр, ділення, обчислення довжини, нормалізацію, обчислення скалярного добутку та кута між векторами.
 
 ---
 
-## Features
+## Опис
 
-- Vector addition and subtraction
-- Scalar multiplication and division
-- Dot product
-- Magnitude (Euclidean norm)
-- Normalization (unit vector)
-- Angle between two vectors (in radians)
-- Operator overloading: `+`, `-`, `*`, `/`, `==`, `abs()`, `-vector`
+Клас `Vector` надає зручний інтерфейс з підтримкою перевантаження операторів для розрахунків з векторами.
 
-## How to connect the module
+---
 
+## Як використовувати
+
+### Імпорт
 ```python
-from vectors import Vector
+from vector import Vector
 ```
 
-## Example Usage
+### Методи класу
 
+1. Ініціалізація
+Ціль: створити об'єкт вектора з заданими x та y.
 ```python
-from vectors import Vector
-
 v1 = Vector(3, 4)
-v2 = Vector(1, 2)
+```
+2. str та repr
+Ціль: отримати людям читану або детальну стрічку для печаті.
+```python
+print(v1)       # vector(3, 4)
+repr(v1)        # vector: (x = 3, y = 4)
+```
+3. Додавання
+Ціль: скласти два вектори.
+```python
+v1 + v2 # Vector(v1.x + v2.x, v1.y + v2.y)
+```
 
-print(v1 + v2)            # vector(4, 6)
-print(v1 * 2)             # vector(6, 8)
-print(v1 * v2)            # 11 (dot product)
-print(abs(v1))            # 5.0
-print(v1.normalize())     # vector(0.6, 0.8)
-print(v1.angle_between(v2))  # angle in radians 
+4. Віднімання
+Ціль: відняти один вектор від іншого.
+```python
+v1 - v2 # Vector(v1.x - v2.x, v1.y - v2.y)
+```
+
+5. Множення
+Ціль: на число або на інший вектор (скалярний добуток).
+```python
+v1 * 2 # Vector(v1.x * 2, v1.y * 2)
+v1 * v2 # v1.x * v2.x + v1.y * v2.y (скалярний добуток)
+```
+
+6. Ділення
+Ціль: ділити вектор на скаляр.
+```python
+v1 / 2 # Vector(v1.x / 2, v1.y / 2)
+```
+
+7. Модуль
+Ціль: обчислити довжину вектора.
+```python
+abs(v1) # math.sqrt(v1 ** 2 + v1 ** 2)
+```
+
+8. Нормалізація
+Ціль: утворити одиничний вектор у тому самому напрямку.
+```python
+v1.normalize() # Vector(v1.x / abs(v1), v1.y / abs(v1))
+```
+9. Кут між векторами
+Ціль: отримати кут у радіанах між векторами.
+```python
+v1.angle_between(v2)
+```
+
+10. Рівність
+Ціль: перевірити, чи рівні два вектори.
+```python
+v1 == v2 # True or False
+```
+
+11. Зміна напрямку
+Ціль: отримати вектор у протилежному напрямку.
+```python
+-v1 # Vector(v1.x * (-1), v1.y * (-1))
+```
+
+## Таблиця можливих помилок
+| Метод                         |	Можлива помилка             |	Опис                                     |
+|-------------------------------|-------------------------------|--------------------------------------------|
+| __init__	                     |TypeError	                    |якщо x або y не числа                       |
+| __add__, __sub__, angle_between |TypeError	                    |якщо операнд не Vector                      |
+| __mul__	                      |TypeError	                    |якщо множення не на число або Vector        |
+| __truediv__	                  |TypeError, ZeroDivisionError	|ділення не на число або на 0                |
+| normalize	                    |ZeroDivisionError	            |нормалізація нульового вектора              |
+| __pow__	                      |NotImplementedError	        |операція зведення в ступінь не підтримується|
+
+## Автор
+Комишанський Роман Вікторович студент групи 11ІПЗ
