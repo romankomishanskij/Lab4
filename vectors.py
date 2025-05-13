@@ -7,7 +7,7 @@ for performing operations on two-dimensional vectors. It includes functionality 
 - Vector addition and subtraction
 - Scalar multiplication and division
 - Dot product calculation
-- Magnitude (length) computation
+- Length computation
 - Vector normalization
 - Angle calculation between two vectors
 
@@ -16,7 +16,7 @@ Operator overloading allows using standard Python syntax for vector arithmetic:
     - `*` for scalar multiplication and dot product
     - `/` for scalar division
     - `==` for vector equality
-    - `abs()` to get vector magnitude
+    - `abs()` to get vector length
     - `-vector` to reverse vector direction
 
 Raises:
@@ -113,7 +113,7 @@ class Vector:
             raise TypeError("You can do only subtract two Vector type objects")
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: object) -> 'Vector' or float:
+    def __mul__(self, other: object) -> 'Vector' or float or int:
         """
         Multiply vector by scalar or compute dot product.
 
@@ -133,7 +133,7 @@ class Vector:
         else:
             raise TypeError("You can multiply vector only with other vector or number")
 
-    def __rmul__(self, other: object) -> 'Vector' or float:
+    def __rmul__(self, other: object) -> 'Vector' or float or int:
         """
         Right-side multiplication support.
 
@@ -173,15 +173,6 @@ class Vector:
             float: Euclidean norm.
         """
         return math.sqrt(self.x ** 2 + self.y ** 2)
-
-    def __pow__(self, power: int) -> None:
-        """
-        Power operation is not supported for vectors.
-
-        Raises:
-            NotImplementedError: Always.
-        """
-        raise NotImplementedError("Vector power operation is not supported")
 
     def __eq__(self, other: object) -> bool:
         """
